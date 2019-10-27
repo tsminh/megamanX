@@ -54,7 +54,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\beescript.cs" />
+     <Compile Include="Assets\cameraControler.cs" />
+     <Compile Include="Assets\MainScenceController.cs" />
      <Compile Include="Assets\mario_script.cs" />
+     <Compile Include="Assets\ScreenManager.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>D:/Documents/Unity/GameDev/week2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
