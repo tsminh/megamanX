@@ -8,4 +8,22 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Scenes/MainScreen.unity
+    guid: 6c633d63dfac4c348ac6e7ac90c2f3b6
+  - enabled: 1
+    path: Assets/Scenes/Mainmenu.unity
+    guid: 6f8b1c1758ecf1846856889f401cda1f
+  - enabled: 1
+    path: Assets/Scenes/Options.unity
+    guid: b2acad2edefd41f428ac7f14a290e6b9
+  - enabled: 1
+    path: Assets/Scenes/LoadGame.unity
+    guid: a31f2b66288d0e2439360741edfdd173
+  - enabled: 1
+    path: Assets/Scenes/ForestScene.unity
+    guid: ee6f515b091f2be49b90d06631d5c966
+  - enabled: 1
+    path: Assets/Scenes/ForestScene1.unity
+    guid: 354d4bb5754280e4a8127e9448ef417b
   m_configObjects: {}
