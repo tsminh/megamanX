@@ -259,17 +259,17 @@ public class mario_script : MonoBehaviour
     }
     private IEnumerator ResetDamage()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
         m_animator.SetBool("isDamage", false);
     }
     void Shoot()
     {
         Vector3 dir = (!flip ? Vector3.right : Vector3.left);
         GameObject bullet;
-        if (power >= 1.3f)
+        if (power >= 0.7f)
         {
             bullet = Instantiate(Bullet3, transform.position, transform.rotation);
-        } else if (power >= 0.5f)
+        } else if (power >= 0.35f)
         {
             bullet = Instantiate(Bullet2, transform.position, transform.rotation);
         } else
@@ -278,54 +278,29 @@ public class mario_script : MonoBehaviour
         }
         bullet.GetComponent<BulletScript>().start(dir);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (Die)
-        {
-            return;
-        }
-        if (collision.collider.tag == "Enemy")
-        {
-            health -= collision.gameObject.GetComponent<Enemy>().damage;
-            healthBar.value = (float)(1.0 * health / 100);
-            audioSource[10].Play();
-            Debug.Log(health);
-            m_animator.SetBool("isDamage", true);
-        }
-        if (health <= 0)
-        {
-            audioSource[11].Play();
-            m_animator.SetBool("isDie", true);
-            Die = true;
-        }
-    }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (Die)
-        {
-            return;
-        }
-        if (collision.collider.tag == "Enemy")
-        {
-            if (!audioSource[10].isPlaying) audioSource[10].Play();
-            Debug.Log(health);
-        }
-        if (health <= 0)
-        {
-            audioSource[11].Play();
-            m_animator.SetBool("isDie", true);
-            Die = true;
-        }
+        if (collision.gameObject.tag == "Enemy")
+            TakeDamage(collision.gameObject.GetComponent<Enemy>().damage);
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    public void TakeDamage(int dam)
     {
         if (Die)
         {
             return;
         }
-        if (collision.collider.tag == "Enemy")
+        health -= dam;
+        healthBar.value = (float)(1.0 * health / 100);
+        if (!audioSource[10].isPlaying) audioSource[10].Play();
+        Debug.Log(health);
+        m_animator.SetBool("isDamage", true);
+        StartCoroutine(ResetDamage());
+
+        if (health <= 0)
         {
-            m_animator.SetBool("isDamage", false);
+            audioSource[11].Play();
+            m_animator.SetBool("isDie", true);
+            Die = true;
         }
     }
 }

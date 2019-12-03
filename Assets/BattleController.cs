@@ -29,6 +29,7 @@ public class BattleController : MonoBehaviour
         } else if (!end && Enemies.transform.childCount == 0)
         {
             end = true;
+            GameObject endScene = Instantiate(ClearScene, UI.transform);
             GameObject Btn = Instantiate(btn, UI.transform);
             Debug.Log("Stage cleared!");
 

@@ -18,7 +18,8 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().TakeDamage(damage);
+            if (collision.GetComponent<Enemy>())
+                collision.GetComponent<Enemy>().TakeDamage(damage);
         }
         if (collision.tag != "Player")
         {
